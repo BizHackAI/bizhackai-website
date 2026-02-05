@@ -1,0 +1,9 @@
+# robots.txt for BizHack AI
+User-agent: *
+Allow: /
+Disallow: /mentions-legales.html
+Disallow: /politique-confidentialite.html
+Disallow: /politique-cookies.html
+Disallow: /cgv.html
+
+Sitemap: https://bizhackai.com/sitemap.xml
