@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sips:*)",
+      "WebSearch",
+      "WebFetch(domain:www.designrush.com)",
+      "WebFetch(domain:www.webstacks.com)",
+      "Bash(open:*)",
+      "WebFetch(domain:linear.app)"
+    ]
+  }
+}
