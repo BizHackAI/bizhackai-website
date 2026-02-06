@@ -1385,6 +1385,65 @@
             font-weight: 500;
         }
 
+        /* ==================== TECH SLIDER ==================== */
+        .tech-slider-section {
+            padding: 40px 0 60px;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(8, 8, 18, 0.95) 100%);
+            overflow: hidden;
+        }
+
+        .tech-slider-title {
+            text-align: center;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-tertiary);
+            margin-bottom: 30px;
+        }
+
+        .tech-slider {
+            width: 100%;
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .tech-slider-track {
+            display: flex;
+            gap: 60px;
+            animation: slide 30s linear infinite;
+            width: max-content;
+        }
+
+        .tech-logo {
+            flex-shrink: 0;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .tech-logo:hover {
+            opacity: 1;
+        }
+
+        .tech-logo img {
+            height: 35px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .tech-slider:hover .tech-slider-track {
+            animation-play-state: paused;
+        }
+
         /* ==================== PROBLEM SECTION ==================== */
         .problem {
             padding: 140px 0;
@@ -5176,6 +5235,32 @@
                             <div class="trust-label">projets livrés</div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TECH SLIDER ==================== -->
+        <section class="tech-slider-section">
+            <div class="container">
+                <p class="tech-slider-title">Technologies que nous maîtrisons</p>
+            </div>
+            <div class="tech-slider">
+                <div class="tech-slider-track">
+                    <div class="tech-logo"><img src="assets/logos/n8n.svg" alt="n8n"></div>
+                    <div class="tech-logo"><img src="assets/logos/openai.svg" alt="OpenAI"></div>
+                    <div class="tech-logo"><img src="assets/logos/claude.svg" alt="Claude"></div>
+                    <div class="tech-logo"><img src="assets/logos/make.svg" alt="Make"></div>
+                    <div class="tech-logo"><img src="assets/logos/airtable.svg" alt="Airtable"></div>
+                    <div class="tech-logo"><img src="assets/logos/notion.svg" alt="Notion"></div>
+                    <div class="tech-logo"><img src="assets/logos/google.svg" alt="Google Workspace"></div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="tech-logo"><img src="assets/logos/n8n.svg" alt="n8n"></div>
+                    <div class="tech-logo"><img src="assets/logos/openai.svg" alt="OpenAI"></div>
+                    <div class="tech-logo"><img src="assets/logos/claude.svg" alt="Claude"></div>
+                    <div class="tech-logo"><img src="assets/logos/make.svg" alt="Make"></div>
+                    <div class="tech-logo"><img src="assets/logos/airtable.svg" alt="Airtable"></div>
+                    <div class="tech-logo"><img src="assets/logos/notion.svg" alt="Notion"></div>
+                    <div class="tech-logo"><img src="assets/logos/google.svg" alt="Google Workspace"></div>
                 </div>
             </div>
         </section>
