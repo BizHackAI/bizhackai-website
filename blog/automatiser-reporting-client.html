@@ -112,6 +112,33 @@
             background: linear-gradient(135deg, #fff 0%, #a0a0b0 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
+        /* Progress bar */
+        .reading-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--violet), var(--blue)); z-index: 1001; width: 0%; transition: width 0.1s; }
+
+        /* TL;DR */
+        .tldr { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem 2rem; margin-bottom: 2.5rem; }
+        .tldr-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1rem; color: var(--green); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
+        .tldr ul { list-style: none; padding: 0; margin: 0; }
+        .tldr li { color: var(--text-secondary); font-size: 0.95rem; padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+        .tldr li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+
+        /* Table of contents */
+        .toc { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 1.5rem 2rem; margin-bottom: 2.5rem; }
+        .toc-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .toc ol { padding-left: 1.2rem; margin: 0; }
+        .toc li { padding: 0.3rem 0; }
+        .toc a { color: var(--violet-light); text-decoration: none; font-size: 0.95rem; }
+        .toc a:hover { text-decoration: underline; }
+
+        /* Callout box */
+        .callout { border-radius: 12px; padding: 1.5rem 2rem; margin: 2rem 0; }
+        .callout-tip { background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.2); }
+        .callout-warning { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); }
+        .callout-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
+        .callout-tip .callout-title { color: var(--violet-light); }
+        .callout-warning .callout-title { color: #F59E0B; }
+        .callout p { margin: 0; color: var(--text-secondary); font-size: 0.95rem; }
+
         .article-hero-img { width: 100%; border-radius: 16px; margin-top: 2rem; border: 1px solid var(--border-subtle); }
         .article-infographic { margin: 2.5rem 0; text-align: center; }
         .article-infographic img { max-width: 100%; border-radius: 12px; border: 1px solid var(--border-subtle); }
@@ -159,6 +186,8 @@
 </head>
 <body>
 
+    <div class="reading-progress" id="readingProgress"></div>
+
     <nav class="nav">
         <div class="nav-inner">
             <a href="/">
@@ -193,11 +222,31 @@
         </header>
 
         <div class="article-content">
+            <div class="tldr">
+                <div class="tldr-title">⚡ TL;DR — L'essentiel en 30 secondes</div>
+                <ul>
+                    <li>Le reporting manuel coûte 10-15h/semaine à une PME avec 10 clients</li>
+                    <li>Un workflow n8n + IA peut générer et envoyer vos rapports automatiquement</li>
+                    <li>Mise en place en 2-4 semaines, ROI dès le premier mois</li>
+                </ul>
+            </div>
+
+            <div class="toc">
+                <div class="toc-title">📑 Sommaire</div>
+                <ol>
+                    <li><a href="#piege">Pourquoi le reporting manuel est un piège</a></li>
+                    <li><a href="#solution">La solution : un workflow d'automatisation</a></li>
+                    <li><a href="#resultats">Résultats concrets</a></li>
+                    <li><a href="#commencer">Par où commencer ?</a></li>
+                    <li><a href="#erreurs">Les erreurs à éviter</a></li>
+                </ol>
+            </div>
+
             <p>Vous passez <strong>2 jours par mois</strong> à copier-coller des chiffres depuis Google Ads, Meta Ads et Analytics dans des slides PowerPoint ? Vos clients attendent leurs rapports et vous courez après les deadlines ? Ce guide va changer votre façon de travailler.</p>
 
             <p>En automatisant vos reportings clients, vous pouvez <strong>récupérer 10 à 15 heures par semaine</strong> et offrir à vos clients des rapports plus fiables, plus fréquents et plus professionnels. Voici comment.</p>
 
-            <h2>Pourquoi le reporting manuel est un piège</h2>
+            <h2 id="piege">Pourquoi le reporting manuel est un piège</h2>
 
             <p>La plupart des PME et agences marketing produisent leurs rapports clients de la même façon depuis des années :</p>
 
@@ -217,7 +266,12 @@
                 <li><strong>Ça ne scale pas</strong> — avec 10 clients, vous y passez vos semaines</li>
             </ul>
 
-            <h2>La solution : un workflow d'automatisation</h2>
+            <div class="callout callout-warning">
+                <div class="callout-title">⚠️ Le vrai coût caché</div>
+                <p>Avec un taux horaire de 50€, 15h/semaine de reporting manuel = <strong>3 000€/mois</strong> de temps perdu. C'est le salaire d'un employé à temps plein... pour du copier-coller.</p>
+            </div>
+
+            <h2 id="solution">La solution : un workflow d'automatisation</h2>
 
             <p>L'idée est simple : <strong>un système qui récupère automatiquement les données, génère un rapport professionnel et l'envoie à vos clients</strong>. Sans intervention humaine (ou presque).</p>
 
@@ -247,7 +301,7 @@
                 <figcaption>Avant vs Après : l'impact de l'automatisation sur le reporting client</figcaption>
             </figure>
 
-            <h2>Résultats concrets</h2>
+            <h2 id="resultats">Résultats concrets</h2>
 
             <blockquote>
                 "Mehdi a automatisé toute ma création de contenu réseaux sociaux et articles SEO. J'ai économisé 15h par semaine et réduit mes coûts de copywriting de 840€/mois. Le système tourne tout seul, je n'ai qu'à valider le dimanche."
@@ -262,7 +316,12 @@
                 <div class="key-number"><strong>100%</strong> des rapports à l'heure</div>
             </div>
 
-            <h2>Par où commencer ?</h2>
+            <div class="callout callout-tip">
+                <div class="callout-title">💡 À retenir</div>
+                <p>L'automatisation ne remplace pas votre expertise — elle remplace le copier-coller. Vous gardez le contrôle stratégique, l'IA gère l'exécution.</p>
+            </div>
+
+            <h2 id="commencer">Par où commencer ?</h2>
 
             <p>Vous n'avez pas besoin de tout automatiser d'un coup. Voici une approche progressive :</p>
 
@@ -273,7 +332,7 @@
                 <li><strong>Semaine 5</strong> — Testez avec 2-3 clients pilotes, ajustez, puis déployez pour tous</li>
             </ol>
 
-            <h2>Les erreurs à éviter</h2>
+            <h2 id="erreurs">Les erreurs à éviter</h2>
 
             <ul>
                 <li><strong>Vouloir tout automatiser d'un coup</strong> — commencez par un seul type de reporting, puis élargissez</li>
@@ -310,5 +369,25 @@
         <p class="footer-copy">© 2026 BizHack AI</p>
     </footer>
 
+    <script>
+        // Reading progress bar
+        window.addEventListener('scroll', function() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById('readingProgress').style.width = scrolled + '%';
+        });
+
+        // Smooth scroll for TOC links
+        document.querySelectorAll('.toc a').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

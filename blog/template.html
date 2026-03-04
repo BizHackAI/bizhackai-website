@@ -142,6 +142,39 @@
             box-shadow: 0 8px 30px rgba(139,92,246,0.3);
         }
 
+        /* ---- PROGRESS BAR ---- */
+        .reading-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--violet), var(--blue)); z-index: 1001; width: 0%; transition: width 0.1s; }
+
+        /* ---- TL;DR ---- */
+        .tldr { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem 2rem; margin-bottom: 2.5rem; }
+        .tldr-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1rem; color: var(--green); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
+        .tldr ul { list-style: none; padding: 0; margin: 0; }
+        .tldr li { color: var(--text-secondary); font-size: 0.95rem; padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+        .tldr li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+
+        /* ---- TABLE OF CONTENTS ---- */
+        .toc { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 1.5rem 2rem; margin-bottom: 2.5rem; }
+        .toc-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .toc ol { padding-left: 1.2rem; margin: 0; }
+        .toc li { padding: 0.3rem 0; }
+        .toc a { color: var(--violet-light); text-decoration: none; font-size: 0.95rem; }
+        .toc a:hover { text-decoration: underline; }
+
+        /* ---- CALLOUT BOXES ---- */
+        .callout { border-radius: 12px; padding: 1.5rem 2rem; margin: 2rem 0; }
+        .callout-tip { background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.2); }
+        .callout-warning { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); }
+        .callout-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
+        .callout-tip .callout-title { color: var(--violet-light); }
+        .callout-warning .callout-title { color: #F59E0B; }
+        .callout p { margin: 0; color: var(--text-secondary); font-size: 0.95rem; }
+
+        /* ---- IMAGES ---- */
+        .article-hero-img { width: 100%; border-radius: 16px; margin-top: 2rem; border: 1px solid var(--border-subtle); }
+        .article-infographic { margin: 2.5rem 0; text-align: center; }
+        .article-infographic img { max-width: 100%; border-radius: 12px; border: 1px solid var(--border-subtle); }
+        .article-infographic figcaption { color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.8rem; font-style: italic; }
+
         /* ---- ARTICLE ---- */
         .article-header {
             padding: 8rem 2rem 3rem;
@@ -294,6 +327,8 @@
 </head>
 <body>
 
+    <div class="reading-progress" id="readingProgress"></div>
+
     <nav class="nav">
         <div class="nav-inner">
             <a href="/">
@@ -351,5 +386,19 @@
         <p class="footer-copy">© 2026 BizHack AI</p>
     </footer>
 
+    <script>
+        window.addEventListener('scroll', function() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('readingProgress').style.width = (winScroll / height) * 100 + '%';
+        });
+        document.querySelectorAll('.toc a').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
 </body>
 </html>
