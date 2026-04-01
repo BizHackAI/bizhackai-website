@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #0a0a0f;
+    width: 760px;
+    padding: 32px;
+    color: #f0f0f0;
+  }
+  .title {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #A78BFA;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #6060a0;
+    margin-bottom: 28px;
+  }
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+  .step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    position: relative;
+  }
+  .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 44px;
+    width: 2px;
+    height: calc(100% - 8px);
+    background: linear-gradient(to bottom, #8B5CF6, rgba(139,92,246,0.1));
+  }
+  .num {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1rem;
+    color: white;
+    position: relative;
+    z-index: 1;
+  }
+  .content {
+    background: #1a1a2e;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 14px 18px;
+    flex: 1;
+    margin-bottom: 12px;
+  }
+  .step-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #f0f0f0;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .step-desc {
+    font-size: 0.83rem;
+    color: #8080a0;
+    line-height: 1.5;
+  }
+  .duration {
+    font-size: 0.75rem;
+    background: rgba(139,92,246,0.15);
+    color: #A78BFA;
+    padding: 2px 8px;
+    border-radius: 100px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .result-bar {
+    background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(59,130,246,0.12));
+    border: 1px solid rgba(139,92,246,0.25);
+    border-radius: 10px;
+    padding: 14px 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .stat { text-align: center; }
+  .stat-n {
+    font-size: 1.6rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #A78BFA, #3B82F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .stat-l { font-size: 0.75rem; color: #6060a0; margin-top: 2px; }
+  .divider { width: 1px; height: 40px; background: rgba(255,255,255,0.08); }
+  .brand { text-align: right; margin-top: 14px; font-size: 0.75rem; color: #4040608; color: rgba(100,100,150,0.5); }
+</style>
+</head>
+<body>
+  <div class="title">🔍 Les 5 étapes d'un Audit IA efficace pour PME</div>
+  <div class="subtitle">Méthode BizHack AI · 1 journée de travail · ROI en &lt;6 mois</div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <div class="content">
+        <div class="step-title">Cartographie des processus <span class="duration">⏱ 1-2h</span></div>
+        <div class="step-desc">Lister tous les processus récurrents (commercial, admin, SAV, RH) avec temps passé réel et outils utilisés.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <div class="content">
+        <div class="step-title">Scoring d'automatisabilité <span class="duration">⏱ 30-60 min</span></div>
+        <div class="step-desc">Évaluer chaque processus sur 4 critères : répétitivité, volume, structuration des données, criticité → score /100.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <div class="content">
+        <div class="step-title">Matrice Impact / Effort <span class="duration">⏱ 30 min</span></div>
+        <div class="step-desc">Classer les opportunités en 4 quadrants. Les "quick wins" (fort impact, faible effort) passent en premier.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <div class="content">
+        <div class="step-title">Chiffrage du ROI <span class="duration">⏱ 45 min</span></div>
+        <div class="step-desc">Heures économisées × coût horaire × 52 semaines vs coût d'implémentation. ROI &lt;6 mois = green light.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">5</div>
+      <div class="content">
+        <div class="step-title">Roadmap opérationnelle <span class="duration">⏱ 1h</span></div>
+        <div class="step-desc">Plan actionnable sur 3-6 mois : quoi automatiser, dans quel ordre, avec quel outil, pour quel ROI attendu.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="result-bar">
+    <div class="stat">
+      <div class="stat-n">12-20h</div>
+      <div class="stat-l">économisées/semaine en moyenne</div>
+    </div>
+    <div class="divider"></div>
+    <div class="stat">
+      <div class="stat-n">&lt;6 mois</div>
+      <div class="stat-l">délai moyen de ROI positif</div>
+    </div>
+    <div class="divider"></div>
+    <div class="stat">
+      <div class="stat-n">½ journée</div>
+      <div class="stat-l">durée de l'audit complet PME</div>
+    </div>
+  </div>
+
+  <div class="brand">bizhackai.com</div>
+</body>
+</html>
